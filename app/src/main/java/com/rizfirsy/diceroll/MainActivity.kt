@@ -18,8 +18,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rollButton: Button = findViewById<Button?>(R.id.rollButton);
-            rollButton.setOnClickListener { rollDice() }
+        val rollButton = findViewById<Button?>(R.id.rollButton)
+        rollButton.setOnClickListener { rollDice() }
     }
 
 /**
@@ -28,15 +28,17 @@ class MainActivity : AppCompatActivity() {
     private fun rollDice() {
         //define the dice object
         val dice = Dice(6)
+        val dice2 = Dice(12)
 
         //rolling the dice
         val diceRolled = dice.roll()
+        val diceRolled2 = dice2.roll()
 
         // tell user that the dice is being rolled
-        Toast.makeText(this, "Dice rolled!", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, "2 Dice rolled!", Toast.LENGTH_SHORT).show()
 
         // Update the screen with the dice rolled result
         val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = diceRolled.toString()
+        resultTextView.text = "You got: " + (diceRolled + diceRolled2)
     }
 }
